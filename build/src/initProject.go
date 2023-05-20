@@ -21,7 +21,7 @@ func InitProject(baseData *types.BaseData) {
 	wd, _ := os.Getwd()
 	var tidyCmd *exec.Cmd
 	if runtime.GOOS == "windows" {
-		tidyCmd = exec.Command("cmd", "/C", fmt.Sprintf("cd %s/%s && go mod tidy", wd, baseData.ProjectName))
+		tidyCmd = exec.Command("cmd.exe", "/C", fmt.Sprintf("cd %s/%s && go mod tidy", wd, baseData.ProjectName))
 	} else {
 		tidyCmd = exec.Command("bash", "-c", fmt.Sprintf("cd %s/%s && go mod tidy", wd, baseData.ProjectName))
 	}

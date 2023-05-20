@@ -88,7 +88,9 @@ func main() {
 		ContinueList: continueList,
 	}
 	// 调用处理项目内容
-	src.ProjectReName(baseData)
+	if basePath != baseData.OutPath {
+		src.ProjectReName(baseData)
+	}
 	// 自动初始化项目需求扩展
 	src.InitProject(baseData)
 }
