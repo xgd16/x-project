@@ -2,12 +2,14 @@ package service
 
 import (
 	"fmt"
+	"x-project/src/service/queue"
 	"x-project/src/service/web"
 )
 
 // 填写注册服务
 var register = map[string]func(){
-	"WEB": web.Service,
+	"WEB":   web.Service,
+	"Queue": queue.Service,
 }
 
 // InitService 初始化系统服务

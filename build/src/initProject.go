@@ -10,7 +10,7 @@ import (
 )
 
 func InitProject(baseData *types.BaseData) {
-	_, _ = color.New(color.FgYellow).Println("开始执行项目 go mod 初始化操作")
+	_, _ = color.New(color.FgYellow).Println("开始执行项目 go mod 初始化操作 自动升级版本库")
 	cmd := exec.Command("go", "env")
 	output, err := cmd.Output()
 	if err != nil {
@@ -21,9 +21,9 @@ func InitProject(baseData *types.BaseData) {
 	wd, _ := os.Getwd()
 	var tidyCmd *exec.Cmd
 	if runtime.GOOS == "windows" {
-		tidyCmd = exec.Command("cmd.exe", "/C", fmt.Sprintf("cd %s/%s && go mod tidy", wd, baseData.ProjectName))
+		tidyCmd = exec.Command("cmd.exe", "/C", fmt.Sprintf("cd %s/%s && go get -u && go mod tidy", wd, baseData.ProjectName))
 	} else {
-		tidyCmd = exec.Command("bash", "-c", fmt.Sprintf("cd %s/%s && go mod tidy", wd, baseData.ProjectName))
+		tidyCmd = exec.Command("bash", "-c", fmt.Sprintf("cd %s/%s && go get -u && go mod tidy", wd, baseData.ProjectName))
 	}
 	output, err = tidyCmd.Output()
 	if err != nil {
